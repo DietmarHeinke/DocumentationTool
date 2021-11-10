@@ -1,7 +1,7 @@
 # DocumentationTool
 Functions revolving around docu-struct and docu-file
 
-  
+  TEST
 ## Main features:
     struct/file (docu-struct/file) contains all relevant info (see below)
     version tree
