@@ -4,6 +4,11 @@ ret = true;
 docufields = fieldnames(docu);
 docallowedfields = listDocufields();
 
+if exist('localListDocufield')
+    docallowedfields = [localListDocufield() docallowedfields];
+end
+
+
 if length(docufields) > length(docallowedfields)
     warning('not allowed fields in this docu strct');
     ret = false;
