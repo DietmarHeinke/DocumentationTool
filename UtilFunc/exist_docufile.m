@@ -11,6 +11,7 @@ if isnumeric(filename)
         ret = 0;
     else
         ret = 2;
+        name = n_uid{filename};
     end
 else
     name = sprintf('%s%s%s.mat',DOCUDIR, filesep, filename);
