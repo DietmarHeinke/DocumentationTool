@@ -21,7 +21,11 @@ if (exist(func) ~= 2)
     error('set uid does not exist');
 end
 
-eval(sprintf('ret = %s(%d);', func, uid));
+ret = createDocustruct();
+ret.uid = uid;
+
+eval(sprintf('ret = %s(%d);', func, ret));
+
 
 if ~exist('nosave', 'var') || nosave == 0
     res = 'y';
