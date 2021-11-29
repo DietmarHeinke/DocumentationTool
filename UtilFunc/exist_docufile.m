@@ -4,6 +4,7 @@ function [ret, name] = exist_docufile(filename)
 %
 global DOCUDIR
 
+name = [];
 if isnumeric(filename)
     n_uid = uid_lookuptable();
     if filename > length(n_uid) || isempty(n_uid{filename}) 
