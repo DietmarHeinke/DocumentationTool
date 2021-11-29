@@ -24,7 +24,7 @@ end
 ret = createDocustruct();
 ret.uid = uid;
 
-eval(sprintf('ret = %s(%d);', func, ret));
+eval(sprintf('ret = %s(ret);', func));
 
 
 if ~exist('nosave', 'var') || nosave == 0
