@@ -1,20 +1,24 @@
 function ret = checkDocustruct(docu)
 
 ret = true;
-docufields = fieldnames(docu);
-docallowedfields = listDocufields();
 
-if exist('localListDocufield')
-    docallowedfields = [localListDocufield() docallowedfields];
-end
+docuDefault = createDocustruct();
+fDocuDefault = fieldnames(docuDefault);
+
+fDocu = fieldnames(docu);
 
 
-if length(docufields) > length(docallowedfields)
-    warning('not allowed fields in this docu strct');
+
+
+
+if length(fDocu) > length(fDocuDefault)
+    warning('not allowed fields in this docu struct');
+    setdiff(fDocu,fDocuDefault);
     ret = false;
-else
-    if all(isfield(docu, docallowedfields)) ~= 1
+ else
+    if length(fDocu) < length(fDocuDefault)
         warning('incomplete docu struct')
+        setdiff(fDocuDefault,fDocu);
         ret = false;
     end
     
