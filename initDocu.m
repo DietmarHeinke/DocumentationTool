@@ -32,7 +32,7 @@ if ~exist('nosave', 'var') || nosave == 0
     [flag, filename] = exist_docufile(uid);
     if flag
         res = input('Docu file exists! Do you want to overwrite it (y/n)?','s');
-        old = load(filename);
+        old = load_docufile(filename);
         save(sprintf('%s%s%s_old',DOCUDIR, filesep, old.filename), '-struct', 'old');
 
     end
