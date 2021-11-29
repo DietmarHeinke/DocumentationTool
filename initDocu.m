@@ -29,7 +29,8 @@ eval(sprintf('ret = %s(ret);', func));
 
 if ~exist('nosave', 'var') || nosave == 0
     res = 'y';
-    if exist_docufile(uid)
+    [flag, filename] = exist_docufile(uid);
+    if flag
         res = input('Docu file exists! Do you want to overwrite it (y/n)?','s');
         old = load_docufile(ret.filename);
         save(sprintf('%s%s%s_old',DOCUDIR, filesep, old.filename), '-struct', 'old');
