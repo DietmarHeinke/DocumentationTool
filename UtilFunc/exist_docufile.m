@@ -1,4 +1,4 @@
-function ret = exist_docufile(filename)
+function [ret, name] = exist_docufile(filename)
 %
 % ret = exist_docufile(file_identifier)
 %
@@ -12,7 +12,7 @@ if isnumeric(filename)
         ret = 2;
     end
 else
-    
-    ret = exist(sprintf('%s%s%s.mat',DOCUDIR, filesep, filename), 'file');
+    name = sprintf('%s%s%s.mat',DOCUDIR, filesep, filename);
+    ret = exist(name, 'file');
     
 end
