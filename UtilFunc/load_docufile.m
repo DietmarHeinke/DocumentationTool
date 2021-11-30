@@ -34,7 +34,7 @@ if isnumeric(model_name)
 end
 
 if isstruct(model_name)
-    folder = model_name.docudir;
+    folder = sprintf('%s%s%s.mat',DOCUDIR,filesep,model_name.docudir);
     model_name = model_name.uid;
     n_uid = uid_lookuptable(folder);
     model_name = char(n_uid{model_name});
