@@ -23,6 +23,8 @@ end
 
 ret = createDocustruct();
 ret.uid = uid;
+ret.data.selector = createAllSelectors();
+ret.model = createAllModels();
 
 eval(sprintf('ret = %s(ret);', func));
 
