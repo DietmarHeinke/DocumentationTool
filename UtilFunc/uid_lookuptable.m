@@ -54,9 +54,9 @@ if ~exist('folder')
     %   files = dir(sprintf('%s%s*u*_%s.mat', DOCUDIR,filesep,ending));
 else
     if ~isstruct(folder)
-    files = dir(sprintf('%s%s%s%s*u*_docu.mat', DOCUDIR,filesep, folder,filesep));
+        files = dir(sprintf('%s%s%s%s*u*_docu.mat', DOCUDIR,filesep, folder,filesep));
     else
-    files = folder;
+        files = folder;
     end
 end
 
