@@ -35,8 +35,8 @@ end
 
 if isstruct(model_name)
     folder = sprintf('%s%s%s',DOCUDIR,filesep,model_name.docudir);
-    model_name = model_name.uid;
     n_uid = uid_lookuptable(model_name.docudir);
+    model_name = model_name.uid;
     model_name = char(n_uid{model_name});
 else
     folder = DOCUDIR;
