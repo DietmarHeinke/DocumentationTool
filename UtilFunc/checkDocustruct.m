@@ -13,12 +13,12 @@ fDocu = fieldnames(docu);
 
 if length(fDocu) > length(fDocuDefault)
     warning('not allowed fields in this docu struct');
-    setdiff(fDocu,fDocuDefault);
+    setdiff(fDocu,fDocuDefault)
     ret = false;
  else
     if length(fDocu) < length(fDocuDefault)
         warning('incomplete docu struct')
-        setdiff(fDocuDefault,fDocu);
+        setdiff(fDocuDefault,fDocu)
         ret = false;
     end
     
