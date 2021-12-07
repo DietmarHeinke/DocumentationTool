@@ -1,11 +1,14 @@
-function ret = initDocu(uid, nosave)
-% 
-% ret = init_docu(uid, nosave)
+function ret = initDocu(uid, nosave, setParaFunc)
 %
-% 'uid' - sets which set_uid function in UtilFunc is called.
+% ret = init_docu(uid, nosave, setParaFunc)
 %
-% 'nosave' - if nosave doesn't exsit or is zero the function saves the docu
+% uid - sets which set_uid function in UtilFunc is called.
+%
+% nosave - if nosave doesn't exsit or is zero the function saves the docu
 %        struct in a docufile. Otherwise only the structed is returned.
+%
+% setParaFunc - @(docu) func(docu, own parameters) if this parameter exists it will get initDocu to call this
+% function to set parameter instead of the default set_uid-functions.
 %
 
 global DOCUDIR
@@ -16,17 +19,27 @@ if uid > length(lookuptable)+1
     error('The uid is too far ahead of the existing docus');
 end
 
-func = sprintf('set_uid%d', uid);
-if (exist(func) ~= 2)
-    error('set uid does not exist');
-end
-
 ret = createDocustruct();
 ret.uid = uid;
 ret.data.selector = createAllSelectors();
 ret.model = createAllModels();
 
-eval(sprintf('ret = %s(ret);', func));
+
+if ~exist('setParaFunc','var')
+    func = sprintf('set_uid%d', uid);
+    if (exist(func) ~= 2)
+        error('set uid does not exist');
+    end
+    func = @(x) feval(func, x);
+    ret = func(ret);
+else
+%   func = @(x) feval(setParaFunc, x);
+    ret = setParaFunc(ret);
+end
+
+
+%ret = func(ret);
+%eval(sprintf('ret = %s(ret);', func));
 
 
 if ~exist('nosave', 'var') || nosave == 0
@@ -38,7 +51,7 @@ if ~exist('nosave', 'var') || nosave == 0
         save(sprintf('%s%s%s_old',DOCUDIR, filesep, old.filename), '-struct', 'old');
 
     end
-    
+
     if strcmp(res, 'y')
         save_docufile(ret);
     else
