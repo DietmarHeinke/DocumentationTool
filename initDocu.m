@@ -12,7 +12,7 @@ function ret = initDocu(uid, nosave, setParaFunc)
 %
 
 global DOCUDIR
-
+ 
 
 lookuptable = uid_lookuptable();
 if uid > length(lookuptable)+1
