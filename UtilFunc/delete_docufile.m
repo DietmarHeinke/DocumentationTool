@@ -3,8 +3,11 @@ function ret = delete_docufile(data)
 
 global DOCUDIR
 
+if isnumeric(data)
+    data = load_docufile(data);
+end
 
-eval(sprintf('''delete %s%s%s.mat'';',DOCUDIR, filesep, data.filename));
+eval(sprintf('delete(''%s%s%s.mat'')',DOCUDIR, filesep, data.filename));
 
 
 end
