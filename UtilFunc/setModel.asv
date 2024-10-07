@@ -1,0 +1,9 @@
+function ret = setModel(ret, modelId)
+
+if ischar(modelId)
+    
+end
+
+ret.model = ret.model{modelId};
+
+end

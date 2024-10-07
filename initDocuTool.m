@@ -1,4 +1,3 @@
-
 function initDocuTool()
 
 % paths to ModelFitting_Skeleton
@@ -8,7 +7,7 @@ addpath(fullfile(home, 'UtilFunc'));
 
 % paths local 
 addpath(fullfile(pwd, 'Models'));
-%addpath(fullfile(pwd, 'Models/Priors'));
+addpath(fullfile(pwd, 'Models/Priors'));
 addpath(fullfile(pwd, 'Data/ReadData'));
 addpath(fullfile(pwd, 'SetParaFunc'));
 addpath(fullfile(pwd, 'AnaResults'));
