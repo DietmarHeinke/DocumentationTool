@@ -27,3 +27,5 @@ else
     error('Inconsistency of uid in struct with uid in filename');
     ret = false;
 end
+
+end

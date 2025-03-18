@@ -24,3 +24,4 @@ ret.vers.major = versMajor;
 ret.modTimes{1} = datestr(now);
 
 ret = addDocuFields(ret);
+end
